@@ -107,3 +107,13 @@
 .ProseMirror hr {
   @apply my-8 border-t border-gray-400;
 }
+
+[data-youtube-video] {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+[data-youtube-video] iframe {
+  max-width: 100%;
+}

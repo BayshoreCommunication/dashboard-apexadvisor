@@ -1,14 +1,15 @@
-import { useEffect } from "react";
-import StarterKit from "@tiptap/starter-kit";
-import { EditorContent, useEditor } from "@tiptap/react";
-import ListItem from "@tiptap/extension-list-item";
-import TextStyle from "@tiptap/extension-text-style";
-import TextAlign from "@tiptap/extension-text-align";
-import Underline from "@tiptap/extension-underline";
-import Image from "@tiptap/extension-image";
-import Link from "@tiptap/extension-link";
-import Toolbar from "./Toolbar";
-import ImageResize from "tiptap-extension-resize-image";
+import { useEffect } from 'react';
+import StarterKit from '@tiptap/starter-kit';
+import { EditorContent, useEditor } from '@tiptap/react';
+import ListItem from '@tiptap/extension-list-item';
+import TextStyle from '@tiptap/extension-text-style';
+import TextAlign from '@tiptap/extension-text-align';
+import Underline from '@tiptap/extension-underline';
+import Image from '@tiptap/extension-image';
+import Link from '@tiptap/extension-link';
+import Toolbar from './Toolbar';
+import ImageResize from 'tiptap-extension-resize-image';
+import Youtube from '@tiptap/extension-youtube';
 
 const TextEditor = ({ value, setValue }) => {
   const editor = useEditor({
@@ -33,7 +34,7 @@ const TextEditor = ({ value, setValue }) => {
       Underline,
 
       TextAlign.configure({
-        types: ["heading", "paragraph"],
+        types: ['heading', 'paragraph'],
       }),
 
       Image.configure({
@@ -45,9 +46,23 @@ const TextEditor = ({ value, setValue }) => {
         allowBase64: true,
         inline: true,
       }),
+
+      Youtube.configure({
+        controls: false,
+        nocookie: true,
+        HTMLAttributes: {
+          class: 'responsive-video resizable',
+        },
+      }),
     ],
 
     content: ``,
+
+    editorProps: {
+      attributes: {
+        spellcheck: 'false',
+      },
+    },
 
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
