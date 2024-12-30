@@ -77,9 +77,8 @@ const TextEditor = ({ value, setValue }) => {
   useEffect(() => {
     // this is just an example. do whatever you want to do here
     // to retrieve your editors content from somewhere
-
     editor?.commands.setContent(value);
-  }, [editor?.commands, value]);
+  }, [editor]);
 
   return (
     <div>
